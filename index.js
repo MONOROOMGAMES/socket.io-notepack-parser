@@ -30,7 +30,7 @@ var isObject = function (value) {
 function Encoder () {}
 
 Encoder.prototype.encode = function (packet) {
-  return [ JSON.stringify(packet) ];
+  return [ notepack.encode((packet) ];
 };
 
 function Decoder () {}
@@ -51,7 +51,7 @@ function isDataValid (decoded) {
 }
 
 Decoder.prototype.add = function (obj) {
-  var decoded = JSON.parse(obj);
+  var decoded = notepack.decode(obj);
 
   var isTypeValid = isInteger(decoded.type) && decoded.type >= PacketType.CONNECT && decoded.type <= PacketType.CONNECT_ERROR;
   if (!isTypeValid) {
